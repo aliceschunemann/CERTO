@@ -22,6 +22,24 @@ namespace AAAAAAAAAAAAAAAa.Data
                 context.Departamentos.Add(d);
             }
             context.SaveChanges();
+            
+            context.Database.EnsureCreated();
+            if (context.Instituicoes.Any())
+            {
+                return;
+            }
+            var instituicoes = new Instituicao[]
+            {
+                new Instituicao { Nome="Ciência da Computação",
+                                    Endereco="Rua LALA"},
+                new Instituicao { Nome="Ciência de Alimentos",
+                                    Endereco="Rua LeLe"}
+            };
+            foreach (Instituicao i in instituicoes)
+            {
+                context.Instituicoes.Add(i);
+            }
+            context.SaveChanges();
         }
     }
 }

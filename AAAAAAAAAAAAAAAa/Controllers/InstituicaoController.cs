@@ -43,7 +43,7 @@ namespace AAAAAAAAAAAAAAAa.Controllers
             };
         public IActionResult Index()
         {
-            return View(instituicoes.OrderBy(i=> i.Nome));
+            return View(instituicoes.OrderBy(i => i.Nome));
         }
 
         public IActionResult Create()
@@ -79,23 +79,6 @@ namespace AAAAAAAAAAAAAAAa.Controllers
             return View(instituicoes.Where(i => i.InstituicaoID == id).First());
         }
 
-        // GET: Instituicao/Delete/5
-        public async Task<IActionResult> Delete(long? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var instituicao = await _context.Instituicoes.SingleOrDefaultAsync(m => m.InstituicaoID == id);
-            if (instituicao == null)
-            {
-                return NotFound();
-            }
-
-            return View(instituicao);
-        }
-
         // POST: Instituicao/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -103,14 +86,15 @@ namespace AAAAAAAAAAAAAAAa.Controllers
         {
             var instituicao = await _context.Instituicoes.SingleOrDefaultAsync(m => m.InstituicaoID == id);
             _context.Instituicoes.Remove(instituicao);
-            TempData["Message"] = "Instituição " + instituicao.Nome.ToUpper() + " foi removida";
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
-        private bool InstituicaoExists(long? id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(Instituicao instituicao)
         {
-            return _context.Instituicoes.Any(e => e.InstituicaoID == id);
+            instituicoes.Remove(instituicoes.Where(i => i.InstituicaoID == instituicao.InstituicaoID).First());
+            return RedirectToAction("Index");
         }
     }
 }

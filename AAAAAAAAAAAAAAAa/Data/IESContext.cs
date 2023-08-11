@@ -16,6 +16,7 @@ namespace AAAAAAAAAAAAAAAa.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Departamento>().ToTable("Departamento");
+            modelBuilder.Entity<Instituicao>().ToTable("Instituicao");
         }
     }
 }
