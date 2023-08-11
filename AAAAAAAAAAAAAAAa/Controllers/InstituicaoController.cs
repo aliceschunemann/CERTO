@@ -1,12 +1,17 @@
 ﻿using AAAAAAAAAAAAAAAa.Models;
+using AAAAAAAAAAAAAAAa.Data;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace AAAAAAAAAAAAAAAa.Controllers
 {
     public class InstituicaoController : Controller
     {
+        private readonly IESContext _context;
+
         private static IList<Instituicao> instituicoes =
             new List<Instituicao>()
             {
@@ -74,18 +79,38 @@ namespace AAAAAAAAAAAAAAAa.Controllers
             return View(instituicoes.Where(i => i.InstituicaoID == id).First());
         }
 
-        public ActionResult Delete(long id)
+        // GET: Instituicao/Delete/5
+        public async Task<IActionResult> Delete(long? id)
         {
-            return View(instituicoes.Where(i => i.InstituicaoID == id).First());
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var instituicao = await _context.Instituicoes.SingleOrDefaultAsync(m => m.InstituicaoID == id);
+            if (instituicao == null)
+            {
+                return NotFound();
+            }
+
+            return View(instituicao);
         }
 
-        [HttpPost]
+        // POST: Instituicao/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Instituicao instituicao)
+        public async Task<IActionResult> DeleteConfirmed(long? id)
         {
-            var teste = instituicoes.Where(i => i.InstituicaoID == instituicao.InstituicaoID).FirstOrDefault();
-            instituicoes.Remove(instituicoes.Where(i => i.InstituicaoID == instituicao.InstituicaoID).FirstOrDefault());
-            return RedirectToAction("Index");
+            var instituicao = await _context.Instituicoes.SingleOrDefaultAsync(m => m.InstituicaoID == id);
+            _context.Instituicoes.Remove(instituicao);
+            TempData["Message"] = "Instituição " + instituicao.Nome.ToUpper() + " foi removida";
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool InstituicaoExists(long? id)
+        {
+            return _context.Instituicoes.Any(e => e.InstituicaoID == id);
         }
     }
 }
