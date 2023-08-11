@@ -16,6 +16,7 @@ namespace AAAAAAAAAAAAAAAa
     {
         public static void Main(string[] args)
         {
+
             var host = CreateWebHostBuilder(args).Build();
             using (var scope = host.Services.CreateScope())
             {
@@ -34,10 +35,9 @@ namespace AAAAAAAAAAAAAAAa
             host.Run();
         }
 
-        private static object CreateWebHostBuilder(string[] args)
-        {
-            throw new NotImplementedException();
-        }
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
