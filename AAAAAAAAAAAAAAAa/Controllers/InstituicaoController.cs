@@ -1,6 +1,6 @@
 ﻿using AAAAAAAAAAAAAAAa.Models;
+using Modelo.Cadastros;
 using AAAAAAAAAAAAAAAa.Data;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +28,7 @@ namespace AAAAAAAAAAAAAAAa.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome")] Instituicao instituicao)
+        public async Task<IActionResult> Create([Bind("Nome", "Endereco")] Instituicao instituicao)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace AAAAAAAAAAAAAAAa.Controllers
             {
                 return NotFound();
             }
-            var instituicao = await _context.Instituicoes.SingleOrDefaultAsync(m => m.InstituicaoID == id);
+            var instituicao = await _context.Instituicoes.Include(d => d.Departamentos).SingleOrDefaultAsync(m => m.InstituicaoID == id);
             if (instituicao == null)
             {
                 return NotFound();

@@ -1,6 +1,7 @@
 ﻿using AAAAAAAAAAAAAAAa.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Modelo.Cadastros;
 
 namespace AAAAAAAAAAAAAAAa.Data
 {
@@ -16,7 +17,7 @@ namespace AAAAAAAAAAAAAAAa.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Departamento>().ToTable("Departamento");
-            modelBuilder.Entity<Instituicao>().ToTable("Instituicao");
+            modelBuilder.Entity<Instituicao>().ToTable("Instituicoes");
         }
     }
 }

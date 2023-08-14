@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using AAAAAAAAAAAAAAAa.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Modelo.Cadastros;
 
 namespace AAAAAAAAAAAAAAAa.Controllers
 {
@@ -16,18 +18,20 @@ namespace AAAAAAAAAAAAAAAa.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Departamentos.OrderBy(c => c.Nome).ToListAsync());
+            return View(await _context.Departamentos.Include(i => i.Instituicao).OrderBy(c => c.Nome).ToListAsync());
         }
 
-        // GET: Departamento/Create
         public IActionResult Create()
         {
+            var instituicoes = _context.Instituicoes.OrderBy(i => i.Nome).ToList();
+            instituicoes.Insert(0, new Instituicao() { InstituicaoID = 0, Nome = "Selecione a instituição" });
+            ViewBag.Instituicoes = instituicoes;
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome")] Departamento departamento)
+        public async Task<IActionResult> Create([Bind("Nome, InstituicaoID")] Departamento departamento)
         {
             try
             {
@@ -44,8 +48,6 @@ namespace AAAAAAAAAAAAAAAa.Controllers
             }
             return View(departamento);
         }
-
-        // GET: Departamento/Edit/5
         public async Task<IActionResult> Edit(long? id)
         {
             if (id == null)
@@ -57,12 +59,13 @@ namespace AAAAAAAAAAAAAAAa.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Instituicoes = new SelectList(_context.Instituicoes.OrderBy(b => b.Nome), "InstituicaoID", "Nome", departamento.InstituicaoID);
             return View(departamento);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("DepartamentoID,Nome")] Departamento departamento)
+        public async Task<IActionResult> Edit(long? id, [Bind("DepartamentoID, Nome, InstituicaoID")] Departamento departamento)
 {
             if (id != departamento.DepartamentoID)
             {
@@ -103,13 +106,13 @@ namespace AAAAAAAAAAAAAAAa.Controllers
                 return NotFound();
             }
             var departamento = await _context.Departamentos.SingleOrDefaultAsync(m => m.DepartamentoID == id);
+            _context.Instituicoes.Where(i => departamento.InstituicaoID == i.InstituicaoID).Load();
             if (departamento == null)
             {
                 return NotFound();
             }
             return View(departamento);
         }
-
         // GET: Departamento/Delete/5
         public async Task<IActionResult> Delete(long? id)
         {
@@ -118,6 +121,7 @@ namespace AAAAAAAAAAAAAAAa.Controllers
                 return NotFound();
             }
             var departamento = await _context.Departamentos.SingleOrDefaultAsync(m => m.DepartamentoID == id);
+            _context.Instituicoes.Where(i => departamento.InstituicaoID == i.InstituicaoID).Load();
             if (departamento == null)
             {
                 return NotFound();
@@ -132,6 +136,7 @@ namespace AAAAAAAAAAAAAAAa.Controllers
         {
             var departamento = await _context.Departamentos.SingleOrDefaultAsync(m => m.DepartamentoID == id);
             _context.Departamentos.Remove(departamento);
+            TempData["Message"] = "Departamento " + departamento.Nome.ToUpper() + " foi removido";
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
