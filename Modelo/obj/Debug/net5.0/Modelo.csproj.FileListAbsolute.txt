@@ -3,3 +3,10 @@ C:\Users\alice\source\repos\CERTO\Modelo\obj\Debug\net5.0\Modelo.GeneratedMSBuil
 C:\Users\alice\source\repos\CERTO\Modelo\obj\Debug\net5.0\Modelo.AssemblyInfoInputs.cache
 C:\Users\alice\source\repos\CERTO\Modelo\obj\Debug\net5.0\Modelo.AssemblyInfo.cs
 C:\Users\alice\source\repos\CERTO\Modelo\obj\Debug\net5.0\Modelo.csproj.CoreCompileInputs.cache
+C:\Users\alice\source\repos\CERTO\Modelo\bin\Debug\net5.0\Modelo.deps.json
+C:\Users\alice\source\repos\CERTO\Modelo\bin\Debug\net5.0\Modelo.dll
+C:\Users\alice\source\repos\CERTO\Modelo\bin\Debug\net5.0\Modelo.pdb
+C:\Users\alice\source\repos\CERTO\Modelo\obj\Debug\net5.0\Modelo.dll
+C:\Users\alice\source\repos\CERTO\Modelo\obj\Debug\net5.0\refint\Modelo.dll
+C:\Users\alice\source\repos\CERTO\Modelo\obj\Debug\net5.0\Modelo.pdb
+C:\Users\alice\source\repos\CERTO\Modelo\obj\Debug\net5.0\ref\Modelo.dll

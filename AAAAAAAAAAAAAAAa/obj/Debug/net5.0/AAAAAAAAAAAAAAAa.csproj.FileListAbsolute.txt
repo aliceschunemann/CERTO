@@ -284,3 +284,14 @@ C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\obj\Debug\net5.0\Razor\Views\
 C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\obj\Debug\net5.0\Razor\Views\Shared\_LayoutIES.cshtml.g.cs
 C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\obj\Debug\net5.0\Razor\Views\Instituicao\_ComDepartamentos.cshtml.g.cs
+C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\bin\Debug\net5.0\System.Web.Mvc.dll
+C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\bin\Debug\net5.0\System.Web.Razor.dll
+C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\bin\Debug\net5.0\System.Web.Helpers.dll
+C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\bin\Debug\net5.0\System.Web.WebPages.Deployment.dll
+C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
+C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\bin\Debug\net5.0\System.Web.WebPages.dll
+C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
+C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\bin\Debug\net5.0\Modelo.dll
+C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\bin\Debug\net5.0\Modelo.pdb
+C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\obj\Debug\net5.0\Razor\Views\Instituicao\_PartialDetailsContentCard.cshtml.g.cs
+C:\Users\alice\source\repos\CERTO\AAAAAAAAAAAAAAAa\obj\Debug\net5.0\Razor\Views\Departamento\_PartialDetailsContentCard.cshtml.g.cs
