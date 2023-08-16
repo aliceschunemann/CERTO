@@ -5,18 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\NewFolder\**" />
     <Compile Remove="NovaPasta1\**" />
     <Compile Remove="NovaPasta\**" />
+    <Content Remove="Areas\NewFolder\**" />
     <Content Remove="NovaPasta1\**" />
     <Content Remove="NovaPasta\**" />
+    <EmbeddedResource Remove="Areas\NewFolder\**" />
     <EmbeddedResource Remove="NovaPasta1\**" />
     <EmbeddedResource Remove="NovaPasta\**" />
+    <None Remove="Areas\NewFolder\**" />
     <None Remove="NovaPasta1\**" />
     <None Remove="NovaPasta\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Models\Departamentos.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\Cadastros\Views\Instituicao\_ValidationScriptsPartial.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
