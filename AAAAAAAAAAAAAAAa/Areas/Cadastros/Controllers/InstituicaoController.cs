@@ -115,12 +115,12 @@ namespace AAAAAAAAAAAAAAAa.Areas.Cadastros.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        /*public IActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
 
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Nome", "Endereco")] Instituicao instituicao)
         {
