@@ -6,10 +6,12 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using AAAAAAAAAAAAAAAa.Data.DAL.Cadastros;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AAAAAAAAAAAAAAAa.Areas.Cadastros.Controllers
 {
     [Area("Cadastros")]
+    [Authorize]
     public class InstituicaoController : Controller
     {
         private readonly IESContext _context;
