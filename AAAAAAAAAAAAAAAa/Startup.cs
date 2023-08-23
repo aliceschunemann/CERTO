@@ -2,6 +2,7 @@ using AAAAAAAAAAAAAAAa.Data;
 using AAAAAAAAAAAAAAAa.Models.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +36,8 @@ namespace AAAAAAAAAAAAAAAa
                 options.LoginPath = "/Infra/Acessar";
                 options.AccessDeniedPath = "/Infra/AcessoNegado";
             });
+            services.AddSession();
+            services.AddDistributedMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,9 +58,13 @@ namespace AAAAAAAAAAAAAAAa
 
             app.UseRouting();
 
+            app.UseSession();
+
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseStatusCodePagesWithReExecute("/Home/Error/", "?statusCode ={ 0}");
 
             app.UseEndpoints(endpoints =>
             {

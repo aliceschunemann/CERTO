@@ -39,5 +39,6 @@ namespace AAAAAAAAAAAAAAAa.Data.DAL.Discente
             await _context.SaveChangesAsync();
             return academico;
         }
+
     }
 }

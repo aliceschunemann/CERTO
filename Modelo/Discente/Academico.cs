@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Modelo.Discente
 {
     public class Academico
@@ -15,5 +18,10 @@ namespace Modelo.Discente
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         [Required]
         public DateTime? Nascimento { get; set; }
+
+        public string FotoMimeType { get; set; }
+        public byte[] Foto { get; set; }
+        [NotMapped]
+        public IFormFile formFile { get; set; }
     }
 }

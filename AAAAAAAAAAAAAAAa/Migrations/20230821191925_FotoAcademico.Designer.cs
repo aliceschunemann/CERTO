@@ -4,14 +4,16 @@ using AAAAAAAAAAAAAAAa.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AAAAAAAAAAAAAAAa.Migrations
 {
     [DbContext(typeof(IESContext))]
-    partial class IESContextModelSnapshot : ModelSnapshot
+    [Migration("20230821191925_FotoAcademico")]
+    partial class FotoAcademico
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -334,36 +336,6 @@ namespace AAAAAAAAAAAAAAAa.Migrations
                     b.ToTable("Academicos");
                 });
 
-            modelBuilder.Entity("Modelo.Docente.CursoProfessor", b =>
-                {
-                    b.Property<long?>("CursoID")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("ProfessorID")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("CursoID", "ProfessorID");
-
-                    b.HasIndex("ProfessorID");
-
-                    b.ToTable("CursoProfessor");
-                });
-
-            modelBuilder.Entity("Modelo.Docente.Professor", b =>
-                {
-                    b.Property<long?>("ProfessorID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ProfessorID");
-
-                    b.ToTable("Professores");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -452,30 +424,9 @@ namespace AAAAAAAAAAAAAAAa.Migrations
                     b.Navigation("Instituicao");
                 });
 
-            modelBuilder.Entity("Modelo.Docente.CursoProfessor", b =>
-                {
-                    b.HasOne("Modelo.Cadastros.Curso", "Curso")
-                        .WithMany("CursosProfessores")
-                        .HasForeignKey("CursoID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Modelo.Docente.Professor", "Professor")
-                        .WithMany("CursosProfessores")
-                        .HasForeignKey("ProfessorID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Curso");
-
-                    b.Navigation("Professor");
-                });
-
             modelBuilder.Entity("Modelo.Cadastros.Curso", b =>
                 {
                     b.Navigation("CursosDisciplinas");
-
-                    b.Navigation("CursosProfessores");
                 });
 
             modelBuilder.Entity("Modelo.Cadastros.Departamento", b =>
@@ -491,11 +442,6 @@ namespace AAAAAAAAAAAAAAAa.Migrations
             modelBuilder.Entity("Modelo.Cadastros.Instituicao", b =>
                 {
                     b.Navigation("Departamentos");
-                });
-
-            modelBuilder.Entity("Modelo.Docente.Professor", b =>
-                {
-                    b.Navigation("CursosProfessores");
                 });
 #pragma warning restore 612, 618
         }
