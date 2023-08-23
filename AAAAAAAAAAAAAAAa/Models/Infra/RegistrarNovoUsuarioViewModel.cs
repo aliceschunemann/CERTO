@@ -20,5 +20,6 @@ namespace AAAAAAAAAAAAAAAa.Models.Infra
             [Compare("Password", ErrorMessage = "Os valores informados para SENHA e CONFIRMAÇÃO não são iguais.")]
 
         public string ConfirmPassword { get; set; }
-        }
-        }
+
+    }
+}
