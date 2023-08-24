@@ -19,8 +19,8 @@
                 <select asp-for="InstituicaoID" class="form-control" asp-items="@(new SelectList(@ViewBag.Instituicoes, "InstituicaoID", "Nome"))" ></select>
             </div>
             <div class="form-group text-center h3">
-                <input type="submit" value="Registrar Departamento" class="btn btn-light" />
-                <a asp-action="Index" class="btn btn-info">Retornar à listagem de departamentos</a>
+                <input type="submit" value="Registrar Departamento" class="btn btn-info" />
+                <a asp-action="Index" class="btn btn-light">Retornar à listagem de departamentos</a>
             </div>
         </form>
     </div>

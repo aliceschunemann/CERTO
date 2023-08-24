@@ -29,11 +29,31 @@
          <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header">
-                    <img class="media-heading" src="~/images/dotnet.png" width="30" height="30" style="padding-left:2px" alt="">
+                    <a asp-controller="Home" asp-action="Index">
+                        <img class="media-heading" src="~/images/dotnet.png" width="30" height="30" style="padding-left:2px" alt="">
+                    </a>
                 </div>
                 <div>
                     <ul class="nav navbar-nav navbar-light">
-                        <li class="navbar-brand">ASP.NET Core MVC</li>
+                        <a asp-controller="Home" asp-action="Index">
+                            <li class="navbar-brand">ASP.NET Core MVC</li>
+                        </a>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-light">
+                        <a asp-controller="Home" asp-action="Index">
+                        <li class="navbar-brand">
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                <div>Olá @UserManager.GetUserName(User), seja bem-vindo(a) / @Html.ActionLink("Logout", "Sair", "Infra", new { area = "" })</div>
+                                }
+                                else
+                                {
+                                <a class="nav-item nav-link" asp-area="" asp-controller="Infra" asp-action="Acessar">
+                                    Informar usuário/senha para acessar
+                                </a>
+                                }
+                        </li>
+                        </a>
                     </ul>
                 </div>
             </div>
@@ -60,17 +80,22 @@
                 <nav class="nav flex-column bg-transparent" style="margin-left:40px;">
                     <div class="row">
                         <a class="nav-item nav-link" asp-area="Cadastros" asp-controller="Instituicao" asp-action="Index">
-                            <img src="~/images/university.png" width="30" height="30" alt="">Instituições
+                            <img src="~/images/instituicao.png" width="30" height="30" alt="">INSTITUIÇÕES
                         </a>
                     </div>
                     <div class="row">
                         <a class="nav-item nav-link" asp-area="Cadastros" asp-controller="Departamento" asp-action="Index">
-                            <img src="~/images/department.png" width="30" height="30" alt="">Departamentos
+                            <img src="~/images/departamento.png" width="30" height="30" alt="">DEPARTAMENTOS
                         </a>
                     </div>
                     <div class="row">
                         <a class="nav-item nav-link" asp-area="Discente" asp-controller="Academico" asp-action="Index">
-                            <img src="~/images/academic.png" width="30" height="30" alt="">Acadêmicos
+                            <img src="~/images/3.jpg" width="30" height="30" alt="">ACADÊMICOS
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a class="nav-item nav-link" asp-area="Docente" asp-controller="Professor" asp-action="AdicionarProfessor">
+                            <img src="~/images/4.jpg" width="30" height="30" alt="">PROFESSORES
                         </a>
                     </div>
                 </nav>
@@ -80,8 +105,8 @@
             </div>
          </div>
      </div>
-     <nav class="navbar fixed-bottom" style="background-color: #e3f2fd; margin-top:20px;">
-        <a class="navbar-brand" href="#">
+     <nav class="navbar fixed-bottom" style="background-color: #e3f2fd; margin-top:50px;">
+        <a class="navbar-brand">
             Alice Schünemann Corrêa
         </a>
     </nav>
