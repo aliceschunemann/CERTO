@@ -1,7 +1,7 @@
 ﻿@model Modelo.Cadastros.Instituicao
 
 @{
-Layout = "_LayoutIES";
+    Layout = "_LayoutIES";
 }
 @section Styles {
     <environment include="Development">
@@ -16,21 +16,20 @@ Layout = "_LayoutIES";
 
 <div class="card-block">
     <div class="card-header text-white bg-secondary text-center h1">Exibindo uma instituição existente</div>
-        <div class="card-body">
-            @{
+    <div class="card-body">
+        @{
             await Html.RenderPartialAsync("~/Areas/Cadastros/Views/Instituicao/_PartialDetailsContentCard.cshtml", Model);
-            }
-        </div>
+        }
     </div>
-    <div class="card-footer bg-info text-center text-white">
-        <form asp-action="Delete">
-            <input type="hidden" asp-for="InstituicaoID" />
-            <input type="submit" value="Remover Instituição" class="btn btn-light" />
-            <a asp-action="Index" class="btn btn-info">
-                Retornar à listagem de instituições
-            </a>
-        </form>
-    </div>
+</div>
+<div class="card-footer bg-info text-center text-white">
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="InstituicaoID" />
+        <input type="submit" value="Remover Instituição" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-light">
+            Retornar à listagem de instituições
+        </a>
+    </form>
 </div>
 @section ScriptPage {
     @{

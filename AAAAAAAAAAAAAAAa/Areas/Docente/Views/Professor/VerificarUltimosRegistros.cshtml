@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Modelo.Docente.CursoProfessor>
 @{
-    Layout = null;
+    Layout = "_LayoutIES";
 }
 <!DOCTYPE html>
 <html>
@@ -34,12 +34,12 @@
             }
         </tbody>
     </table>
-    <p>
-        <a asp-action="AdicionarProfessor">
+    <div class="card-footer bg-info text-center text-white">
+        <a asp-action="AdicionarProfessor" class="btn btn-light" style="align-items:center">
             Voltar para Adicionar
             Professor
         </a>
-    </p>
+    </div>
 
 </body>
 </html>
