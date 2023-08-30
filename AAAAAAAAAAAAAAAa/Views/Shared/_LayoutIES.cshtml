@@ -3,12 +3,13 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewBag.Title</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
@@ -25,70 +26,95 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
-     <nav class="navbar navbar-light bg-primary navbar-fixed-top">
-         <div class="container-fluid">
-            <div class="row">
-                <div class="navbar-header">
-                    <a asp-controller="Home" asp-action="Index">
-                        <img class="media-heading" src="~/images/livro.png" width="30" height="30" style="margin:2px" alt="">
+     <nav class="navbar navbar-light bg-dark navbar-fixed-top">
+         <div class="navbar-header">
+              <a asp-controller="Home" asp-action="Index">
+                   <img class="media-heading" src="~/images/livro.png" width="35" height="35" alt="">
+              </a>
+              <a asp-controller="Home" asp-action="Index">
+                   <li style="padding-left:5px" class="navbar-brand">ASP.NET Core MVC</li>
+              </a>
+         </div>
+        <div>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="btn btn-light" asp-area="Cadastros" asp-controller="Instituicao" asp-action="Index" style="margin-left:5px; height:48px;">
+                        <img src="~/images/instituicao.png" width="30" height="30" style="padding:2px" alt="">INSTITUIÇÕES
                     </a>
-                </div>
-                <div>
-                    <div class="row" width="100%">
-                        <div class="col-8">
-                            <a asp-controller="Home" asp-action="Index">
-                                <li style="padding-left:5px" class="navbar-brand">ASP.NET Core MVC</li>
-                            </a>
-                        </div>
-                       <div class="col-2">
-                            @if (SignInManager.IsSignedIn(User))
-                            {
-                                <p>Olá @UserManager.GetUserName(User) / @Html.ActionLink("Logout", "Sair", "Infra", new { area = "" })</p>
-                            }
-                            else
-                            {
-                                <a class="nav-item nav-link" asp-area="" asp-controller="Infra" asp-action="Acessar">
-                                    <p><img class="media-heading" src="~/images/login.png" width=" 30" height="30" style="padding-left:2px" alt=""></p>
-                                </a>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link btn btn-light" asp-area="Cadastros" asp-controller="Departamento" asp-action="Index" style="margin-left:5px; height:48px;">
+                        <img src="~/images/departamento.png" width="30" height="30" style="padding:2px" alt="">DEPARTAMENTOS
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link btn btn-light" asp-area="Discente" asp-controller="Academico" asp-action="Index" style="margin-left:5px; height:48px;">
+                        <img src="~/images/academico.png" width="30" height="30" style="padding:2px" alt="">ACADÊMICOS
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link btn btn-light" asp-area="Docente" asp-controller="Professor" asp-action="AdicionarProfessor" style="margin-left:5px; height:48px;">
+                        <img src="~/images/professor.png" width="30" height="30" style="padding:2px" alt="">PROFESSORES
+                    </a>
+                </li>
+            </ul>
+        </div>
+         <div>
+              <ul class="nav justify-content-end">
+                   @if (SignInManager.IsSignedIn(User))
+                   {
+                       <li class="nav-item">
+                           <h6>Olá @UserManager.GetUserName(User)!</h6>
+                       </li>
+                       <li class="nav-item">
+                           <a asp-action="Sair" asp-area="" asp-controller="Infra" class="btn btn-light" style="margin-left:5px">
+                                Sair
+                           </a>
+                       </li>
+                   }
+                   else
+                   {
+                       <li class="nav-item">
+                           <a class="nav-item nav-link btn btn-light" asp-area="" asp-controller="Infra" asp-action="Acessar" style="margin-left:5px">
+                               Login
+                           </a>
+                       </li>
+                   }
+              </ul>
          </div>
      </nav>
-     <div class="container" style="margin-top: 20px;"> 
-         <div class="row">
-            <div class="col-3">
-                <nav class="nav flex-column bg-transparent" style="margin-left:40px;">
+     <div class="container-fluid" style="margin-top: 20px;"> 
+         @*<div class="row">
+            <div class="col-2">
+                <nav class="nav flex-column bg-transparent" style="margin-left:40px">
                     <div class="row">
-                        <a class="nav-item nav-link" asp-area="Cadastros" asp-controller="Instituicao" asp-action="Index">
+                        <a class="nav-item nav-link btn btn-info" asp-area="Cadastros" asp-controller="Instituicao" asp-action="Index">
                             <img src="~/images/instituicao.png" width="30" height="30" style="padding:3px" alt="">INSTITUIÇÕES
                         </a>
                     </div>
                     <div class="row">
-                        <a class="nav-item nav-link" asp-area="Cadastros" asp-controller="Departamento" asp-action="Index">
+                        <a class="nav-item nav-link btn btn-info" asp-area="Cadastros" asp-controller="Departamento" asp-action="Index">
                             <img src="~/images/departamento.png" width="30" height="30" style="padding:3px" alt="">DEPARTAMENTOS
                         </a>
                     </div>
                     <div class="row">
-                        <a class="nav-item nav-link" asp-area="Discente" asp-controller="Academico" asp-action="Index">
-                            <img src="~/images/estudante.png" width="30" height="30" style="padding:3px" alt="">ACADÊMICOS
+                        <a class="nav-item nav-link btn btn-info" asp-area="Discente" asp-controller="Academico" asp-action="Index">
+                            <img src="~/images/academico.png" width="30" height="30" style="padding:3px" alt="">ACADÊMICOS
                         </a>
                     </div>
                     <div class="row">
-                        <a class="nav-item nav-link" asp-area="Docente" asp-controller="Professor" asp-action="AdicionarProfessor">
+                        <a class="nav-item nav-link btn btn-info" asp-area="Docente" asp-controller="Professor" asp-action="AdicionarProfessor">
                             <img src="~/images/professor.png" width="30" height="30" style="padding:3px" alt="">PROFESSORES
                         </a>
                     </div>
                 </nav>
             </div>
-            <div class="col-9">
+            <div class="col-9">*@
                 @RenderBody()
-            </div>
-         </div>
+            @*</div>
+         </div>*@
      </div>
-     <nav class="navbar sticky-bottom" style="background-color: #e3f2fd; margin-top:50px;">
+     <nav class="navbar sticky-bottom bg-secondary" style="margin-top:50px">
         <a class="navbar-brand">
             Alice Schünemann Corrêa
         </a>
