@@ -7,11 +7,9 @@ using System.Collections.Generic;
 using Modelo.Docente;
 using System.Linq;
 using AAAAAAAAAAAAAAAa.Areas.Docente.Models;
-using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using System.Security.Cryptography;
 
 namespace AAAAAAAAAAAAAAAa.Areas.Docente.Controllers
 {

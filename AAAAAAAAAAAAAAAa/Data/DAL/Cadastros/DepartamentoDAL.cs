@@ -1,5 +1,4 @@
-﻿using AAAAAAAAAAAAAAAa.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Modelo.Cadastros;
 using System.Linq;
 using System.Threading.Tasks;

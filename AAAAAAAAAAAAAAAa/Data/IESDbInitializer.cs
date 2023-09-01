@@ -1,5 +1,4 @@
-﻿using AAAAAAAAAAAAAAAa.Models;
-using Modelo.Cadastros;
+﻿using Modelo.Cadastros;
 using System.Linq;
 
 namespace AAAAAAAAAAAAAAAa.Data

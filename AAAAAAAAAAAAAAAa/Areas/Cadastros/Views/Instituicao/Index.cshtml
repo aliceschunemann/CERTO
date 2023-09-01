@@ -2,24 +2,6 @@
 
 @{
     Layout = "_LayoutIES";
-    <script>
-        $.ajax({
-            type: "POST",
-            url: "~/Areas/Cadastros/Views/Instituicao/Index",
-            data: '{idinstituicao: ' + idinstituicao + '}',
-            //cache: false,
-            success: function (data) {
-                <div class="col-3" >
-                {
-                    await Html.RenderPartialAsync("~/Areas/Cadastros/Views/Instituicao/_PartialDetailsContentCard.cshtml", Model);
-                }
-                    < /div>
-            },
-            error: function (err) {
-                //mensagem de erro
-            }
-        });
-    </script>
 }
     <div class="card-block">
         <div class="container-fluid">
@@ -71,25 +53,49 @@
                 </div>
                 </div>
                 <div class="col-3">
-                @{
-                    //var idinstituicao = idinstituicao;
-                    
-                }
+                    <div class="container detalhes" id="containerDetalhes">
+                        @{
+                            var idinstituicao = 
+                           @if(idinstituicao!=null){
+
+                            }
+                            else
+                            {
+                            
+                            }
+                        }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     @section ScriptPage {
+        
+        @if (@TempData["Message"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["Message"]
+            </div>
+        }
+
         <script type="text/javascript">
+            
             $(document).ready(function () {
                 $('#tabela_instituicoes').DataTable();
             });
+
+            $.ajax({
+              type: "POST",
+              url: "@Url.Action("Detalhes")",
+              data: {idinstituicao = 'id'},
+              success: function(data){
+                 $("#containerDetalhes").text(data);
+              },
+              error: function(err) {
+                
+              }
+           });
+
         </script>
-    @if (@TempData["Message"] != null)
-    {
-        <div class="alert alert-success" role="alert">
-            @TempData["Message"]
-        </div>
-    }
     }
 

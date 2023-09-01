@@ -3,7 +3,6 @@ using Modelo.Cadastros;
 using Modelo.Docente;
 using System;
 using System.Linq;
-using System.Security.Cryptography;
 
 namespace AAAAAAAAAAAAAAAa.Data.DAL.Cadastros
 {

@@ -6,9 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Modelo.Discente;
-using System;
 using System.IO;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace AAAAAAAAAAAAAAAa.Areas.Discente.Controllers
@@ -85,37 +83,6 @@ namespace AAAAAAAAAAAAAAAa.Areas.Discente.Controllers
             }
             return View(academico);
         }
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(long? id, [Bind("AcademicoID,Nome,RegistroAcademico,Nascimento")] Academico academico)
-        //{
-        //    if (id != academico.AcademicoID)
-        //    {
-        //        return NotFound();
-        //    }
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            await academicoDAL.GravarAcademico(academico)
-        //            ;
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!await AcademicoExists(academico.AcademicoID))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(academico);
-        //}
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
