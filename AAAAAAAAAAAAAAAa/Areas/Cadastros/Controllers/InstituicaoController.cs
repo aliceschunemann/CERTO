@@ -94,11 +94,10 @@ namespace AAAAAAAAAAAAAAAa.Areas.Cadastros.Controllers
             return await instituicaoDAL.ObterInstituicaoPorId((long)id)
             != null;
         }
-
-        public async Task<IActionResult> Details(long? id)
-        {
-            return await ObterVisaoInstituicaoPorId(id);
-        }
+        //public async Task<IActionResult> Details(long? id)
+        //{
+        //    return await ObterVisaoInstituicaoPorId(id);
+        //}
         public async Task<IActionResult> Edit(long? id)
         {
             return await ObterVisaoInstituicaoPorId(id);
