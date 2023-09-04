@@ -11,60 +11,75 @@
 
     @inject Microsoft.AspNetCore.Identity.SignInManager<AAAAAAAAAAAAAAAa.Models.Infra.UsuarioDaAplicacao> SignInManager
     @inject Microsoft.AspNetCore.Identity.UserManager<AAAAAAAAAAAAAAAa.Models.Infra.UsuarioDaAplicacao> UserManager
-    @*@RenderSection("Styles", required: false)*@
+    @RenderSection("Styles", required: false)
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a asp-controller="Home" asp-action="Index" class="navbar-brand">
-                <img class="media-heading" src="~/images/livro.png" width="35" height="35" alt="">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="btn btn-light" asp-area="Cadastros" asp-controller="Instituicao" asp-action="Index" style="margin-left:5px; height:48px;">INSTITUIÇÕES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-light" asp-area="Cadastros" asp-controller="Departamento" asp-action="Index" style="margin-left:5px; height:48px;">DEPARTAMENTOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-light" asp-area="Discente" asp-controller="Academico" asp-action="Index" style="margin-left:5px; height:48px;">ACADÊMICOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-light" asp-area="Docente" asp-controller="Professor" asp-action="AdicionarProfessor" style="margin-left:5px; height:48px;">PROFESSORES</a>
-                    </li>
-                    @if (SignInManager.IsSignedIn(User))
-                    {
+    <div class="container-fluid">
+        <row>
+            <div class="containerNavbar col-3">
+                <div class="sidebar">
+                    <div class="logo">
+                        <a asp-controller="Home" asp-action="Index" class="navbar-brand">
+                            <i class="fa-solid fa-book-open-reader fa-2xl"></i>
+                        </a>
+                    </div>
+                    <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a asp-action="Sair" asp-area="" asp-controller="Infra" class="btn btn-light" style="margin-left:5px">
-                                Sair
+                            <a asp-area="Cadastros" asp-controller="Instituicao" asp-action="Index">
+                                <i class="fa-solid fa-building-columns fa-2xs"></i>Instituições
                             </a>
                         </li>
-                    }
-                    else
-                    {
                         <li class="nav-item">
-                            <a class="nav-item nav-link btn btn-light" asp-area="" asp-controller="Infra" asp-action="Acessar" style="margin-left:5px">
-                                Login
+                            <a asp-area="Cadastros" asp-controller="Departamento" asp-action="Index">
+                                <i class="fa-solid fa-building fa-2xs"></i>Departamentos
                             </a>
                         </li>
-                    }
-                </ul>
+                        <li class="nav-item">
+                            <a asp-area="Discente" asp-controller="Academico" asp-action="Index">
+                                <i class="fa-solid fa-graduation-cap fa-2xs"></i>Acadêmicos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="Docente" asp-controller="Professor" asp-action="AdicionarProfessor">
+                                <i class="fa-solid fa-user-tie fa-2xs"></i>Professores
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-     <div class="container-fluid" style="margin-top: 20px;"> 
-         @RenderBody()
-     </div>
-     <nav class="navbar sticky-bottom bg-secondary" style="margin-top:50px">
-        <a class="navbar-brand">
-            Alice Schünemann Corrêa
-        </a>
-    </nav>
-    
+            <div class="main col-9">
+                <div class="container-fluid">
+                    <ul class="nav justify-content-end">
+                        <li class="navbar-item">
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <a asp-action="Sair" asp-area="" asp-controller="Infra">
+                                    <i class="fa-solid fa-right-to-bracket fa-2xs"></i>Sair
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-area="" asp-controller="Infra" asp-action="Acessar">
+                                    <i class="fa-solid fa-right-to-bracket fa-2xs"></i>Login
+                                </a>
+                            }
+                        </li>
+                    </ul>
+                    <hr />
+                </div>
+                <div class="container-fluid">
+                    <div class="mb-3">
+                        <div class="container-fluid">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </row>
+    </div>
+
+    @await Html.PartialAsync("_ScriptsPartial")
     @RenderSection("ScriptPage", required: false)
+
 </body>
 </html>

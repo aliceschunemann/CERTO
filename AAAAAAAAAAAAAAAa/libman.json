@@ -25,6 +25,14 @@
     {
       "library": "twitter-bootstrap@5.3.1",
       "destination": "wwwroot/lib/twitter-bootstrap/"
+    },
+    {
+      "library": "font-awesome@6.4.2",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "sass.js@0.11.1",
+      "destination": "wwwroot/lib/sass.js/"
     }
   ]
 }
