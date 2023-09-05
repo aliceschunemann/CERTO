@@ -1,8 +1,9 @@
 ﻿/*<------------------------ Estilo ---------------------------->*/
 $font-different: Tahoma;
 $font-stack: Helvetica, sans-serif;
-$primary-color: #DEBABE;
-$secondary-color: #AB9093;
+$primary-color: #0E324D;
+$secondary-color: #092133;
+$dark-color: #000000;
 
 body {
     margin: 0;
@@ -14,12 +15,11 @@ a {
 }
 
 i {
-    padding: 5px;
-    color: $primary-color;
+    margin: 5px;
 }
 
 ul {
-
+    margin:3px;
 
     li {
         list-style: none;
@@ -29,35 +29,48 @@ ul {
 
 /*<------------------------ Esqueleto ---------------------------->*/
 
-.containerNavbar {
-    height:100%;
-    padding:8px;
-}
+nav {
+    width: 85%;
+    margin: auto;
+    padding: 2px;
+    margin-top:5px;
 
-.sidebar {
-    max-width: 264px;
-    min-width: 264px;
-    border-radius: 2px;
-    box-shadow: 10px 5px 5px black;
+    ul {
+        margin-left: 60px;
 
-    li {
-        color: $primary-color;
-        font-family: $font-different;
-    }
+        li {
+            color: $dark-color;
+            font-family: $font-different;
+            margin-left: 20px;
 
-    .logo {
-        padding: 1px;
+            a {
+                color: $dark-color;
+            }
 
-        a {
-            color: $secondary-color;
+            a:hover {
+                text-underline-offset: 6px;
+            }
         }
     }
 }
 
-.main {
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100%;
-    
+.navbar-brand {
+    padding: 1px;
+}
 
+.botaoLogin {
+    background: $primary-color;
+    border-radius: 15px;
+    color: #ffff;
+}
+
+.botaoLogin:hover {
+    background: #ffff;
+    color: $primary-color;
+    border-color: $primary-color;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
 }

@@ -26,10 +26,10 @@
   <ItemGroup>
     <Content Remove="Areas\Cadastros\Views\Instituicao\Details.cshtml" />
     <Content Remove="Areas\Cadastros\Views\Instituicao\_ValidationScriptsPartial.cshtml" />
+    <Content Remove="compilerconfig.json" />
     <Content Remove="Views\_ViewStart.cshtml" />
-    <Content Remove="wwwroot\css\site.css" />
+    <Content Remove="wwwroot\css\custom.css" />
     <Content Remove="wwwroot\css\StyleSheet.css" />
-    <Content Remove="wwwroot\css\StyleSheet.scss" />
     <Content Remove="wwwroot\css\teste.css" />
     <Content Remove="wwwroot\images\academico.png" />
     <Content Remove="wwwroot\images\departamento.png" />
@@ -47,6 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BuildWebCompiler2022" Version="1.14.10" />
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
@@ -66,6 +67,10 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\lib\" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
   </ItemGroup>
 
   <ItemGroup>

@@ -14,70 +14,59 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
-    <div class="container-fluid">
-        <row>
-            <div class="containerNavbar col-3">
-                <div class="sidebar">
-                    <div class="logo">
-                        <a asp-controller="Home" asp-action="Index" class="navbar-brand">
-                            <i class="fa-solid fa-book-open-reader fa-2xl"></i>
+    <nav class="navbar navbar-expand-lg navbar-transparent bg-transparent">
+        <div class="container-fluid">
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand">
+                <i class="fa-solid fa-gear fa-2xl" style="color:#0E324D"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a asp-area="Cadastros" asp-controller="Instituicao" asp-action="Index">
+                            INSTITUIÇÕES
                         </a>
-                    </div>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a asp-area="Cadastros" asp-controller="Instituicao" asp-action="Index">
-                                <i class="fa-solid fa-building-columns fa-2xs"></i>Instituições
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-area="Cadastros" asp-controller="Departamento" asp-action="Index">
-                                <i class="fa-solid fa-building fa-2xs"></i>Departamentos
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-area="Discente" asp-controller="Academico" asp-action="Index">
-                                <i class="fa-solid fa-graduation-cap fa-2xs"></i>Acadêmicos
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-area="Docente" asp-controller="Professor" asp-action="AdicionarProfessor">
-                                <i class="fa-solid fa-user-tie fa-2xs"></i>Professores
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-area="Cadastros" asp-controller="Departamento" asp-action="Index">
+                            DEPARTAMENTOS
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-area="Discente" asp-controller="Academico" asp-action="Index">
+                            ACADÊMICOS
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-area="Docente" asp-controller="Professor" asp-action="AdicionarProfessor">
+                            PROFESSORES
+                        </a>
+                    </li>
+                </ul>
+                <span class="login">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a asp-area="" asp-controller="Infra" asp-action="Sair" class="btn botaoLogin">
+                            SAIR
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-area="" asp-controller="Infra" asp-action="Acessar" class="btn botaoLogin">
+                            ENTRAR
+                        </a>
+                    }
+                </span>
             </div>
-            <div class="main col-9">
-                <div class="container-fluid">
-                    <ul class="nav justify-content-end">
-                        <li class="navbar-item">
-                            @if (SignInManager.IsSignedIn(User))
-                            {
-                                <a asp-action="Sair" asp-area="" asp-controller="Infra">
-                                    <i class="fa-solid fa-right-to-bracket fa-2xs"></i>Sair
-                                </a>
-                            }
-                            else
-                            {
-                                <a asp-area="" asp-controller="Infra" asp-action="Acessar">
-                                    <i class="fa-solid fa-right-to-bracket fa-2xs"></i>Login
-                                </a>
-                            }
-                        </li>
-                    </ul>
-                    <hr />
-                </div>
-                <div class="container-fluid">
-                    <div class="mb-3">
-                        <div class="container-fluid">
-                            @RenderBody()
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </row>
+        </div>
+    </nav>
+    <hr />
+    <div class="main">
+        @RenderBody()
     </div>
-
+  
     @await Html.PartialAsync("_ScriptsPartial")
     @RenderSection("ScriptPage", required: false)
 
