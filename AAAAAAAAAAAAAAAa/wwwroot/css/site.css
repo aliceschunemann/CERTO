@@ -28,28 +28,39 @@ nav {
   margin-top: 5px;
 }
 nav ul {
-  margin-left: 60px;
+  margin-left: 15%;
 }
 nav ul li {
   color: #000000;
   font-family: Tahoma;
-  margin-left: 20px;
+  margin-left: 10%;
 }
 nav ul li a {
   color: #000000;
 }
 nav ul li a:hover {
-  text-underline-offset: 6px;
+  border-bottom: 1px solid;
+  padding-bottom: 4px;
+}
+nav ul li a:active {
+  border-bottom: 1px solid;
+  padding-bottom: 4px;
 }
 
 .navbar-brand {
   padding: 1px;
+  width: 7%;
+  height: 2%;
+}
+.navbar-brand img {
+  width: 100%;
 }
 
 .botaoLogin {
   background: #0E324D;
   border-radius: 15px;
   color: white;
+  padding: 7px 17px 7px 17px;
 }
 
 .botaoLogin:hover {
@@ -60,5 +71,32 @@ nav ul li a:hover {
 
 .main {
   height: 100%;
+  width: 100%;
+}
+
+.imagemHome {
+  width: 75%;
+  margin: auto;
+}
+.imagemHome img {
+  width: 100%;
+}
+
+.containerLogin {
+  box-shadow: 1px 2px 20px 3px #a0a0a0;
+  width: fit-content;
+  height: auto;
+  margin: auto;
+  border-radius: 20px;
+  padding: 8%;
+  /*    margin-top:20%;
+  */
+}
+.containerLogin h5 {
+  margin: auto;
+  margin-bottom: 40px;
+  align-self: center;
+}
+.containerLogin a {
   width: 100%;
 }

@@ -33,22 +33,28 @@ nav {
     width: 85%;
     margin: auto;
     padding: 2px;
-    margin-top:5px;
+    margin-top: 5px;
 
     ul {
-        margin-left: 60px;
+        margin-left: 15%;
 
         li {
             color: $dark-color;
             font-family: $font-different;
-            margin-left: 20px;
+            margin-left: 10%;
 
             a {
                 color: $dark-color;
             }
 
             a:hover {
-                text-underline-offset: 6px;
+                border-bottom: 1px solid;
+                padding-bottom: 4px;
+            }
+
+            a:active {
+                border-bottom: 1px solid;
+                padding-bottom: 4px;
             }
         }
     }
@@ -56,12 +62,19 @@ nav {
 
 .navbar-brand {
     padding: 1px;
+    width:7%;
+    height:2%;
+
+    img {
+        width: 100%;
+    }
 }
 
 .botaoLogin {
     background: $primary-color;
     border-radius: 15px;
     color: #ffff;
+    padding: 7px 17px 7px 17px;
 }
 
 .botaoLogin:hover {
@@ -73,4 +86,33 @@ nav {
 .main {
     height: 100%;
     width: 100%;
+}
+
+.imagemHome {
+    width:75%;
+    margin: auto;
+
+    img {
+        width: 100%;
+    }
+}
+
+.containerLogin {
+    box-shadow: 1px 2px 20px 3px #a0a0a0;
+    width:fit-content;
+    height:auto;
+    margin: auto;
+    border-radius: 20px;
+    padding: 8%;
+/*    margin-top:20%;
+*/
+    h5 {
+        margin: auto;
+        margin-bottom:40px;
+        align-self:center;
+    }
+
+    a {
+        width:100%;
+    }
 }
