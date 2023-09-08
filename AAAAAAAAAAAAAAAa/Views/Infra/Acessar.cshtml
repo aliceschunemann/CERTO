@@ -17,21 +17,15 @@
             <span asp-validation-for="Senha" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <button type="submit" class="botaoLogin">
-                Acessar
-            </button>
+            <input type="submit" class="btn botaoLogin" value="Acessar">
         </div>
         <div class="form-group">
-            <p>
-                <a asp-action="RegistrarNovoUsuario"
-                   asp-route-returnurl="@ViewData["ReturnUrl"]">
-                    Registrar um novo usuário?
+            <center><p>
+                Não está cadastrado ainda?
+                <a asp-action="RegistrarNovoUsuario" asp-route-returnurl="@ViewData["ReturnUrl"]" class="cadastroLink">
+                    Cadastre-se aqui!
                 </a>
-            </p>
+            </p></center>
         </div>
     </form>
 </div>
-
-@section ScriptPage {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
-}

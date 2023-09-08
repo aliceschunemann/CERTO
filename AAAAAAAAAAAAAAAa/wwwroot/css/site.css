@@ -61,6 +61,8 @@ nav ul li a:active {
   border-radius: 15px;
   color: white;
   padding: 7px 17px 7px 17px;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
 .botaoLogin:hover {
@@ -84,19 +86,17 @@ nav ul li a:active {
 
 .containerLogin {
   box-shadow: 1px 2px 20px 3px #a0a0a0;
-  width: fit-content;
+  width: 35%;
   height: auto;
   margin: auto;
   border-radius: 20px;
-  padding: 8%;
-  /*    margin-top:20%;
-  */
-}
-.containerLogin h5 {
-  margin: auto;
-  margin-bottom: 40px;
-  align-self: center;
+  padding: 4%;
+  margin-top: 4%;
 }
 .containerLogin a {
   width: 100%;
+}
+
+.form-group input {
+  margin-bottom: 20px;
 }
