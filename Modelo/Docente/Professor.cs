@@ -6,10 +6,11 @@ namespace Modelo.Docente
 {
     public class Professor
     {
-        [DisplayName("Código Professor")]
+        [DisplayName("Código do Professor")]
         public long? ProfessorID { get; set; }
         
         [Required(ErrorMessage = "O campo Nome é obrigatório")]
+        [DisplayName("Nome do Professor")]
         public string Nome { get; set; }
 
         public virtual ICollection<CursoProfessor> CursosProfessores { get; set; }

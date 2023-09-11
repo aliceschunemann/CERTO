@@ -20,6 +20,10 @@ ul li {
   margin: 2px;
 }
 
+.container {
+  width: 100%;
+}
+
 /*<------------------------ Esqueleto ---------------------------->*/
 nav {
   width: 85%;
@@ -84,6 +88,13 @@ nav ul li a:active {
   width: 100%;
 }
 
+table {
+  margin: 2px;
+}
+table td {
+  padding: 8px;
+}
+
 .containerLogin {
   box-shadow: 1px 2px 20px 3px #a0a0a0;
   width: 35%;
@@ -99,4 +110,8 @@ nav ul li a:active {
 
 .form-group input {
   margin-bottom: 20px;
+}
+
+#tabela_departamentos {
+  width: 90%;
 }

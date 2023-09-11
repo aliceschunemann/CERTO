@@ -4,9 +4,16 @@
 Layout = "_LayoutIES";
 }
 
-<div class="card-block">
-    <div class="card-header text-white bg-secondary text-center h1">Alterando uma instituição existente</div>
-    <div class="card-body">
+@await Html.PartialAsync("_StylePartial")
+
+<div class="container">
+    <nav class="navbar navbar-transparent bg-transparent">
+        <div class="container-fluid">
+            <h5>Exibindo uma instituição existente</h5>
+        </div>
+    </nav>
+    <br />
+    <div class="container">
         <form asp-action="Edit">
             <input type="hidden" asp-for="InstituicaoID" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -21,16 +28,11 @@ Layout = "_LayoutIES";
                 <span asp-validation-for="Endereco" class="text-danger"></span>
             </div>
             <div class="form-group text-center h3">
-                <input type="submit" value="Atualizar Instituição" class="btn btn-info" />
-                    <a asp-action="Index" class="btn btn-light">Retornar à listagem de instituições</a>
+                <input type="submit" value="Atualizar Instituição" class="btn botaoLogin" style="width:30%; margin-top:14px" />
+                <a asp-action="Index" class="btn botaoLogin" style="width:30%" value="Voltar" />
             </div>
         </form>
     </div>
-    <div class="card-footer bg-info text-center text-white">
-        Informe os dados acima e/ou clique em um dos botões de ação
-    </div>
 </div>
-@section ScriptPage {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
+
+@await Html.PartialAsync("_ValidationScriptsPartial")

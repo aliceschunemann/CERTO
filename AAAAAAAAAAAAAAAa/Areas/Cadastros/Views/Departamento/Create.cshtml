@@ -4,9 +4,14 @@
     Layout = "_LayoutIES";
 }
 
-<div class="card-block">
-    <div class="card-header text-white bg-danger text-center h1">Registrando um novo departamento</div>
-    <div class="card-body">
+<div class="container">
+    <nav class="navbar navbar-transparent bg-transparent">
+        <div class="container-fluid">
+            <h5>Exibindo um departamento existente</h5>
+        </div>
+    </nav>
+    <br />
+    <div class="container">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -16,19 +21,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="InstituicaoID" class="control-label"></label>
-                <select asp-for="InstituicaoID" class="form-control" asp-items="@(new SelectList(@ViewBag.Instituicoes, "InstituicaoID", "Nome"))" ></select>
+                <select asp-for="InstituicaoID" class="form-control" asp-items="@(new SelectList(@ViewBag.Instituicoes, "InstituicaoID", "Nome"))"></select>
             </div>
             <div class="form-group text-center h3">
-                <input type="submit" value="Registrar Departamento" class="btn btn-info" />
-                <a asp-action="Index" class="btn btn-light">Retornar à listagem de departamentos</a>
+                <input type="submit" value="Registrar Departamento" class="btn botaoLogin" style="width:30%; margin-top:14px" />
+                <a asp-action="Index" class="btn botaoLogin" style="width:30%">Voltar</a>
             </div>
         </form>
     </div>
-    <div class="card-footer bg-dark text-center text-white">
-        Informe os dados acima e/ou clique em um dos botões de ação
-    </div>
 </div>
-@section ScriptPage {
-@{await Html.RenderPartialAsync("_ValidationScriptsPartial");
-}
-}
+
+@await Html.PartialAsync("_ValidationScriptsPartial")

@@ -7,14 +7,15 @@ namespace Modelo.Cadastros
 {
     public class Curso
     {
-        [DisplayName("Código Curso")]
+        [DisplayName("Código do Curso")]
         public long? CursoID { get; set; }
         
         [Required(ErrorMessage = "O campo Nome é obrigatório")]
+        [DisplayName("Nome do Curso")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "O campo Departamento é obrigatório")]
-        [DisplayName("Código Departamento")]
+        [DisplayName("Código do Departamento")]
         public long? DepartamentoID { get; set; }
 
         public Departamento Departamento { get; set; }

@@ -3,99 +3,92 @@
 @{
     Layout = "_LayoutIES";
 }
-    <div class="card-block">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-9">
-                <div class="card-header text-white bg-primary text-center h1">Instituições Registradas</div>
-                <div class="card-body">
-                    <table id="tabela_instituicoes">
-                        <thead>
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.InstituicaoID)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Nome)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Endereco)
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.InstituicaoID)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Nome)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Endereco)
-                                    </td>
-                                    <td>
-                                        <form action="POST">
-                                            <input type="hidden" value="@item.InstituicaoID">
-                                            <input type="submit" class="btn btn-light" value="Detalhes">
-                                        </form>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-                <div class="card-footer bg-success text-center">
-                    <a asp-action="Create" class="btn-success"> Criar uma nova instituição </a>
-                </div>
-                </div>
-                <div class="col-3">
-                    <div class="container detalhes" id="containerDetalhes">
-                        @*@{
-                            var idinstituicao = 
-                           @if(idinstituicao!=null){
 
-                            }
-                            else
-                            {
-                            
-                            }
-                        }*@
-                    </div>
-                </div>
-            </div>
+@await Html.PartialAsync("_StylePartial")
+
+
+@if (@TempData["Message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Message"]
+    </div>
+}
+
+<div class="container">
+    <nav class="navbar navbar-transparent bg-transparent">
+        <div class="container-fluid">
+            <h5>Instituições registradas</h5>
+            <span class="login">
+                <a asp-action="Create" class="btn botaoLogin">Registrar nova instituição</a>
+            </span>
+        </div>
+    </nav>
+    <br />
+    <div class="container">
+        <div class="row">
+            <table id="tabela_instituicoes">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.InstituicaoID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Endereco)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InstituicaoID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Endereco)
+                            </td>
+                            <td>
+                                <form action="POST">
+                                    <input type="hidden" value="@item.InstituicaoID">
+                                    <input type="submit" class="btn btn-light" value="Detalhes">
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
-    @section ScriptPage {
-        
-        @if (@TempData["Message"] != null)
-        {
-            <div class="alert alert-success" role="alert">
-                @TempData["Message"]
-            </div>
-        }
+</div>
 
-        <script type="text/javascript">
-            
-            $(document).ready(function () {
-                $('#tabela_instituicoes').DataTable();
+@await Html.PartialAsync("_ScriptsPartial")
+@await Html.PartialAsync("_ValidationScriptsPartial")
+
+@section ScriptPage {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tabela_instituicoes').DataTable({
+                "order": [[1, "asc"]]
             });
+        });
 
-            $.ajax({
-              type: "POST",
-              url: "@Url.Action("Detalhes")",
-              data: {idinstituicao = 'id'},
-              success: function(data){
-                 $("#containerDetalhes").text(data);
-              },
-              error: function(err) {
-                
-              }
-           });
+        //$.ajax({
+        //    type: "POST",
+        //    url: "@Url.Action("Detalhes")",
+        //    data: { idinstituicao = 'id' },
+        //    success: function (data) {
+        //        $("#containerDetalhes").text(data);
+        //    },
+        //    error: function (err) {
 
-        </script>
-    }
-
+        //    }
+        //});
+    </script>
+}

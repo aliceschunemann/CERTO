@@ -4,35 +4,26 @@
     Layout = "_LayoutIES";
 }
 
-@section Styles {
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/font-awesome.min.css"
-        asp-fallback-href="~/lib/font-awesome/css/all.css"
-        asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-    </environment>
-}
+@await Html.PartialAsync("_StylePartial")
 
-<div class="card-block">
-    <div class="card-header text-white bg-secondary text-center h1">
-        Exibindo uma departamento existente
-    </div>
-    <div class="card-body">
+<div class="container">
+    <nav class="navbar navbar-transparent bg-transparent">
+        <div class="container-fluid">
+            <h5>Exibindo um departamento existente</h5>
+        </div>
+    </nav>
+    <br />
+    <div class="container">
         @{
             await Html.RenderPartialAsync("~/Areas/Cadastros/Views/Departamento/_PartialDetailsContentCard.cshtml", Model);
         }
     </div>
-    <div class="card-footer bg-info text-center text-white">
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalConfirmationDelete">
-            Remover Departamento
-        </button>
-        <a asp-action="Index" class="btn btn-light">
-            Retornar à listagem de Departamentos
-        </a>
+    <div class="container text-center">
+        <a class="btn botaoLogin" data-toggle="modal" data-target="#modalConfirmationDelete" style="width:30%">Remover departamento</a>
+        <a asp-action="Index" class="btn botaoLogin" style="width:30%">Voltar</a>
     </div>
 </div>
+
 <div class="modal fade" id="modalConfirmationDelete" tabindex="-1"
      role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
     <div class="modal-dialog" role="document">

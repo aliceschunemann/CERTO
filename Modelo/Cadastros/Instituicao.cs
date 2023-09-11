@@ -6,13 +6,14 @@ namespace Modelo.Cadastros
 {
     public class Instituicao
     {
-        [DisplayName("Código Instituição")]
+        [DisplayName("Código da Instituição")]
         public long? InstituicaoID { get; set; }
 
         [Required(ErrorMessage = "O campo Nome é obrigatório")]
+        [DisplayName("Nome da Instituição")]
         public string Nome { get; set; }
 
-        [DisplayName("Endereço")]
+        [DisplayName("Endereço da Instituição")]
         [Required(ErrorMessage = "O campo Endereço é obrigatório")]
         public string Endereco { get; set; }
         

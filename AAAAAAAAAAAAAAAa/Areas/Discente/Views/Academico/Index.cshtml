@@ -3,15 +3,8 @@
     Layout = "_LayoutIES";
 }
 
-@section Styles {
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css" />
-    </environment>
-    <environment exclude="Development"><link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
-        asp-fallback-href="~/lib/datatables/css/jquery.dataTables.min.css"
-        asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-    </environment>
-}
+@await Html.PartialAsync("_StylePartial")
+
 
 @if (@TempData["Message"] != null)
 {
@@ -20,9 +13,18 @@
     </div>
 }
 
-<div class="card-block">
-    <div class="card-header text-white bg-primary text-center h1">Acadêmicos Registrados</div>
-        <div class="card-body">
+<div class="container">
+    <nav class="navbar navbar-transparent bg-transparent">
+        <div class="container-fluid">
+            <h5>Departamentos registrados</h5>
+            <span class="login">
+                <a asp-action="Create" class="btn botaoLogin">Registrar novo acadêmico</a>
+            </span>
+        </div>
+    </nav>
+    <br />
+    <div class="container">
+        <div class="row">
             <table id="tabela_academicos">
                 <thead>
                     <tr>
@@ -67,26 +69,18 @@
                 </tbody>
             </table>
         </div>
-        <div class="card-footer bg-success text-center">
-            <a asp-action="Create" class="btn-success">Criar um novo acadêmico</a>
-        </div>
     </div>
+</div>
+
+@await Html.PartialAsync("_ScriptsPartial")
+@await Html.PartialAsync("_ValidationScriptsPartial")
 
 @section ScriptPage {
-    <environment include="Development">
-        <script src="~/lib/datatables/js/jquery.dataTables.min.js"
-        ></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"
-            asp-fallback-src="~/lib/datatables/js/jquery.dataTables.min.js">
-        </script>
-    </environment>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#tabela_academicos').DataTable({
                 "order": [[1, "asc"]]
             });
         });
-</script>
+    </script>
 }
