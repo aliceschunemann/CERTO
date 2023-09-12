@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using AAAAAAAAAAAAAAAa.Data.DAL.Cadastros;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AAAAAAAAAAAAAAAa.Areas.Cadastros.Controllers
 {
@@ -89,8 +90,7 @@ namespace AAAAAAAAAAAAAAAa.Areas.Cadastros.Controllers
 
         private async Task<bool> InstituicaoExists(long? id)
         {
-            return await instituicaoDAL.ObterInstituicaoPorId((long)id)
-            != null;
+            return await instituicaoDAL.ObterInstituicaoPorId((long)id)!= null;
         }
 
         [HttpPost, ActionName("Detalhes")]

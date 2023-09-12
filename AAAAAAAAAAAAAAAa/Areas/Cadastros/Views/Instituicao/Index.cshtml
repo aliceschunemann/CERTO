@@ -26,44 +26,51 @@
     <br />
     <div class="container">
         <div class="row">
-            <table id="tabela_instituicoes">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.InstituicaoID)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Nome)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Endereco)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+                <table id="tabela_instituicoes">
+                    <thead>
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.InstituicaoID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nome)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Endereco)
-                            </td>
-                            <td>
-                                <form action="POST">
-                                    <input type="hidden" value="@item.InstituicaoID">
-                                    <input type="submit" class="btn btn-light" value="Detalhes">
-                                </form>
-                            </td>
+                            <th>
+                                @Html.DisplayNameFor(model => model.InstituicaoID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nome)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Endereco)
+                            </th>
+                            <th></th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.InstituicaoID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Endereco)
+                                </td>
+                                <td>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <a asp-action="Edit" asp-route-id="@item.InstituicaoID" class="btn botaoLogin">Editar</a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a asp-action="Details" asp-route-id="@item.InstituicaoID" class="btn botaoLogin">Detalhes</a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a asp-action="Delete" asp-route-id="@item.InstituicaoID" class="btn botaoLogin">Deletar</a>
+                                    </div>
+                                </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>     
         </div>
     </div>
 </div>
@@ -78,17 +85,5 @@
                 "order": [[1, "asc"]]
             });
         });
-
-        //$.ajax({
-        //    type: "POST",
-        //    url: "@Url.Action("Detalhes")",
-        //    data: { idinstituicao = 'id' },
-        //    success: function (data) {
-        //        $("#containerDetalhes").text(data);
-        //    },
-        //    error: function (err) {
-
-        //    }
-        //});
     </script>
 }

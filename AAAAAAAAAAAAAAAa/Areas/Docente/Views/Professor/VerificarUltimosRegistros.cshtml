@@ -2,44 +2,46 @@
 @{
     Layout = "_LayoutIES";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>VerificarUltimosRegistros</title>
-</head>
-<body>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Curso)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Professor)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CursoID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProfessorID)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <div class="card-footer bg-info text-center text-white">
-        <a asp-action="AdicionarProfessor" class="btn btn-light" style="align-items:center">
-            Voltar para Adicionar
-            Professor
-        </a>
-    </div>
 
-</body>
-</html>
+@await Html.PartialAsync("_StylePartial")
+
+<div class="container">
+    <nav class="navbar navbar-transparent bg-transparent">
+        <div class="container-fluid">
+            <h5>Professor registrados</h5>
+            <span class="login">
+                <a asp-action="AdicionarProfessor" class="btn botaoLogin">Voltar</a>
+            </span>
+        </div>
+    </nav>
+    <br />
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Curso)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Professor)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CursoID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProfessorID)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@await Html.PartialAsync("_ValidationScriptsPartial")

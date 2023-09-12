@@ -12,6 +12,7 @@ body {
 
 a {
     text-decoration: none;
+    font-size:1rem;
 }
 
 i {
@@ -19,11 +20,11 @@ i {
 }
 
 ul {
-    margin:3px;
+    margin: 3px;
 
     li {
         list-style: none;
-        margin:2px;
+        margin: 2px;
     }
 }
 
@@ -81,6 +82,7 @@ nav {
     padding: 7px 17px 7px 17px;
     width:100%;
     margin-bottom:5px;
+    font-size:1rem;
 }
 
 .botaoLogin:hover {

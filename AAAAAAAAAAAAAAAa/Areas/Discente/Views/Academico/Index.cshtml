@@ -60,9 +60,17 @@
                                 @Html.DisplayFor(modelItem => item.Nascimento)
                             </td>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.AcademicoID">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.AcademicoID">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.AcademicoID">Delete</a>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <a asp-action="Edit" asp-route-id="@item.AcademicoID" class="btn botaoLogin">Editar</a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a asp-action="Details" asp-route-id="@item.AcademicoID" class="btn botaoLogin">Detalhes</a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a asp-action="Delete" asp-route-id="@item.AcademicoID" class="btn botaoLogin">Deletar</a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     }

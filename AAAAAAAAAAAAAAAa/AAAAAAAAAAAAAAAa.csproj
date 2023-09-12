@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Areas\Cadastros\Views\Instituicao\Details.cshtml" />
     <Content Remove="Areas\Cadastros\Views\Instituicao\_ValidationScriptsPartial.cshtml" />
     <Content Remove="compilerconfig.json" />
     <Content Remove="Views\Shared\_Layout.cshtml" />
