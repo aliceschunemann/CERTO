@@ -94,17 +94,18 @@ namespace AAAAAAAAAAAAAAAa.Areas.Cadastros.Controllers
         }
 
         [HttpPost, ActionName("Detalhes")]
-        public async Task<IActionResult> Detalhes(long? id)
+        public IActionResult Detalhes(long? id)
         {
             if (id == null)
             {
                 return RedirectToAction("Erro");
             }
-            else
-            {
-                return await ObterVisaoInstituicaoPorId(id);
-            }
+
+            var model = instituicaoDAL.ObterInstituicaoPorId((long)id);
+
+            return PartialView("_PartialDetailsContentCard", model);
         }
+
         public async Task<IActionResult> Edit(long? id)
         {
             return await ObterVisaoInstituicaoPorId(id);

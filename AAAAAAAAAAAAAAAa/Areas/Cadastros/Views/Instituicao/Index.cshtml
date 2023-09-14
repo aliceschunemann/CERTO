@@ -4,9 +4,6 @@
     Layout = "_LayoutIES";
 }
 
-@await Html.PartialAsync("_StylePartial")
-
-
 @if (@TempData["Message"] != null)
 {
     <div class="alert alert-success" role="alert">
@@ -26,6 +23,7 @@
     <br />
     <div class="container">
         <div class="row">
+            <div class="col-6">
                 <table id="tabela_instituicoes">
                     <thead>
                         <tr>
@@ -55,35 +53,23 @@
                                     @Html.DisplayFor(modelItem => item.Endereco)
                                 </td>
                                 <td>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a asp-action="Edit" asp-route-id="@item.InstituicaoID" class="btn botaoLogin">Editar</a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a asp-action="Details" asp-route-id="@item.InstituicaoID" class="btn botaoLogin">Detalhes</a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a asp-action="Delete" asp-route-id="@item.InstituicaoID" class="btn botaoLogin">Deletar</a>
-                                    </div>
-                                </div>
+                                    @*<form>
+                                        <input type="hidden" asp-for="@item.InstituicaoID" />
+                                        <input type="submit" id="submitDetalhes" class="btn botaoLogin" value="Detalhes" />
+                                    </form>*@
+                                    <input type="button" class="btn botaoLogin" @*data-instituicao-id="@item.InstituicaoID"*@ value="Detalhes" onclick="detalhesInstituicao(@(item.InstituicaoID))" />
+
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>     
-        </div>
+            </div>
+            <div class="col-6">
+                <div id="containerDetalhes">
+                    ...
+                </div>
+            </div>
     </div>
 </div>
-
-@await Html.PartialAsync("_ScriptsPartial")
-@await Html.PartialAsync("_ValidationScriptsPartial")
-
-@section ScriptPage {
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#tabela_instituicoes').DataTable({
-                "order": [[1, "asc"]]
-            });
-        });
-    </script>
-}
+</div>

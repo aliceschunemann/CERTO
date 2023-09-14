@@ -15,6 +15,8 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
+    @await Html.PartialAsync("_ScriptsPartial")
+
     <nav class="navbar navbar-expand-lg navbar-transparent bg-transparent">
         <div class="container-fluid">
             <a asp-controller="Home" asp-action="Index" class="navbar-brand">
@@ -68,8 +70,8 @@
         @RenderBody()
     </div>
   
-    @await Html.PartialAsync("_ScriptsPartial")
-    @RenderSection("ScriptPage", required: false)
+    
+    @*@RenderSection("ScriptPage", required: false)*@
 
 </body>
 </html>

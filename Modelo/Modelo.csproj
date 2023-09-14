@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Cadastros\NovaPasta\**" />
+    <EmbeddedResource Remove="Cadastros\NovaPasta\**" />
+    <None Remove="Cadastros\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.10" />
   </ItemGroup>
 	<ItemGroup>
