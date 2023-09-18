@@ -53,12 +53,7 @@
                                     @Html.DisplayFor(modelItem => item.Endereco)
                                 </td>
                                 <td>
-                                    @*<form>
-                                        <input type="hidden" asp-for="@item.InstituicaoID" />
-                                        <input type="submit" id="submitDetalhes" class="btn botaoLogin" value="Detalhes" />
-                                    </form>*@
-                                    <input type="button" class="btn botaoLogin" @*data-instituicao-id="@item.InstituicaoID"*@ value="Detalhes" onclick="detalhesInstituicao(@(item.InstituicaoID))" />
-
+                                    <input type="button" class="btn botaoLogin"@* data-instituicao-id="@item.InstituicaoID"*@ value="Detalhes" onclick="detalhesInstituicao(@(item.InstituicaoID))" />
                                 </td>
                             </tr>
                         }
@@ -73,3 +68,30 @@
     </div>
 </div>
 </div>
+
+@section ScriptPage {
+    <script type="text/javascript">
+        //$(".submitDetalhes").click(function () {
+        //    var instituicaoid = $(this).data("instituicao-id");
+        function detalhesInstituicao(instituicaoId) {
+            console.log("Clicou em: " + instituicaoId);
+            $.ajax({
+                url: '@Url.Action("Detalhes", "Instituicao")',
+                type: "POST",
+                data: { "id": instituicaoId },
+                dataType: "html",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    console.log('sucesso:');
+                    console.log(data);
+                    $("#containerDetalhes").html(data);
+                },
+                error: function (request, status, error) {
+                    console.log('error:');
+                    console.log(status);
+                    console.log(error);
+                },
+            });
+        }
+    </script>
+}
